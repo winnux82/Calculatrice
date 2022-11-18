@@ -148,6 +148,8 @@
             this.Btn_Eraser.TabIndex = 10;
             this.Btn_Eraser.UseVisualStyleBackColor = false;
             this.Btn_Eraser.Click += new System.EventHandler(this.Btn_Eraser_Click);
+            //this.Btn_Eraser.MouseLeave += new System.EventHandler(this.Btn_Eraser_MouseLeave);
+            //this.Btn_Eraser.MouseHover += new System.EventHandler(this.Btn_Eraser_MouseHover);
             // 
             // Calculatrice
             // 

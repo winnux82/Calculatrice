@@ -113,10 +113,10 @@ namespace Calculatrice
             Calculer("/");
         }
         private void Txt_A_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            const char hyphen = (char)0x2D;
-            const char delete = (char)0x08;
-            // Verifier que la touche pressée n'est pas ctrl, digitale ou .
+            }
+            catch (FormatException ex)
+            {
+                lbl_Info.Text = ex.Message;
             if (!char.IsDigit(e.KeyChar) && 
                 (e.KeyChar != '-') && 
                 (e.KeyChar != ',') &&
@@ -128,19 +128,20 @@ namespace Calculatrice
 
             // Pas plus qu'un ,
             if ((e.KeyChar == ',') && (((TextBox)sender).Text.IndexOf(',') > -1))
-            {
-                e.Handled = true;
+        }
+        private void Txt_A_KeyPress(object sender, KeyPressEventArgs e)
             }
-
+            catch (FormatException ex)
+            {
             // Pas plus qu'un -
             if ((e.KeyChar == '-') && (((TextBox)sender).Text.IndexOf('-') > -1)) //&& ((sender as TextBox).Text.StartsWith("-")
-            {
-                e.Handled = true;
+        }
+        private void Txt_A_KeyPress(object sender, KeyPressEventArgs e)
             }
 
 
         }
-
+            {
         private void Txt_B_KeyPress(object sender, KeyPressEventArgs e)
         {
             const char hyphen = (char)0x2D;
@@ -157,12 +158,33 @@ namespace Calculatrice
 
             // Pas plus qu'un ,
             if ((e.KeyChar == ',') && (((TextBox)sender).Text.IndexOf(',') > -1))
+        {
+        }
+            const char delete = (char)0x08;
+        private void Txt_B_KeyPress(object sender, KeyPressEventArgs e)
+            // Pas plus qu'un -
+            if ((e.KeyChar == '-') && (((TextBox)sender).Text.IndexOf('-') > -1)) //&& ((sender as TextBox).Text.StartsWith("-")
             {
                 e.Handled = true;
             }
 
-            // Pas plus qu'un -
-            if ((e.KeyChar == '-') && (((TextBox)sender).Text.IndexOf('-') > -1)) //&& ((sender as TextBox).Text.StartsWith("-")
+        private void Txt_B_KeyPress(object sender, KeyPressEventArgs e)
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+
+        private void Txt_B_KeyPress(object sender, KeyPressEventArgs e)
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
             {
                 e.Handled = true;
             }

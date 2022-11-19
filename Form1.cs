@@ -52,7 +52,6 @@ namespace Calculatrice
 
                     case "+":
                         Reponse = float.Parse(Txt_A.Text) + float.Parse(Txt_B.Text);
-
                         Lbl_Info.Text = Reponse.ToString();
                         break;
                     case "-":
@@ -90,12 +89,6 @@ namespace Calculatrice
 
         }
 
-        public class ChampsVides : Exception
-        {
-            public ChampsVides(string? message) : base(message)
-            {
-            }
-        }
 
         private void Btn_Add_Click(object sender, EventArgs e)
         {
@@ -117,10 +110,11 @@ namespace Calculatrice
         {
             const char hyphen = (char)0x2D;
             const char delete = (char)0x08;
-            // Verifier que la touche pressée n'est pas ctrl, digitale ou .
+            // Verifier la touche pressée
             if (!char.IsDigit(e.KeyChar) &&
                 (e.KeyChar != '-') &&
                 (e.KeyChar != ',') &&
+                //autoriser delete et backspace
                 (e.KeyChar != hyphen) &&
                 (e.KeyChar != delete))
             {
@@ -146,7 +140,7 @@ namespace Calculatrice
         {
             const char hyphen = (char)0x2D;
             const char delete = (char)0x08;
-            // Verifier que la touche pressée n'est pas ctrl, digitale ou .
+            // Verifier la touche pressée
             if (!char.IsDigit(e.KeyChar) &&
                 (e.KeyChar != '-') &&
                 (e.KeyChar != ',') &&
@@ -171,17 +165,5 @@ namespace Calculatrice
 
         }
 
-
-
-
-        //private void Btn_Eraser_MouseHover(object sender, EventArgs e)
-        //{
-        //    Btn_Eraser.BackColor = Color.Blue;
-        //}
-
-        //private void Btn_Eraser_MouseLeave(object sender, EventArgs e)
-        //{
-        //    Btn_Eraser.BackColor = Color.Gray;
-        //}
     }
 }

@@ -24,139 +24,156 @@ namespace Calculatrice
             Txt_A.Clear();
             Txt_B.Clear();
             Txt_A.Focus();
+            Lbl_Info.Text = "";
+
+            Lbl_Info.BackColor= default;
+            Lbl_Info.ForeColor = Color.Black;
+        }
+
+        public void Calculer(string Operateur)
+        {
+
+            if (String.IsNullOrEmpty(Txt_A.Text) || String.IsNullOrEmpty(Txt_B.Text))
+            {
+                Lbl_Info.BackColor = Color.Red;
+                Lbl_Info.ForeColor = Color.White;
+                Lbl_Info.Text = "Les champs ne peuvent pas être vides";
+            }
+            
+            float Reponse;
+
+            try
+            {
+                Lbl_Info.BackColor = Color.Blue;
+                Lbl_Info.ForeColor = Color.Black;
+                switch (Operateur)
+                {
+
+                    case "+":
+                        Reponse = float.Parse(Txt_A.Text) + float.Parse(Txt_B.Text);
+
+                        Lbl_Info.Text = Reponse.ToString();
+                        break;
+                    case "-":
+                        Reponse = float.Parse(Txt_A.Text) - float.Parse(Txt_B.Text);
+                        Lbl_Info.Text = Reponse.ToString();
+                        break;
+                    case "*":
+                        Reponse = float.Parse(Txt_A.Text) * float.Parse(Txt_B.Text);
+                        Lbl_Info.Text = Reponse.ToString();
+                        break;
+                    case "/":
+                        //if (Txt_A.Text == "0" || Txt_B.Text == "0")
+                        //    Lbl_Info.Text = "Division impossible par 0";
+                        //else
+                        //{
+                            Reponse = float.Parse(Txt_A.Text) / float.Parse(Txt_B.Text);
+                            Lbl_Info.Text = Reponse.ToString();
+                        //}
+                        break;
+
+
+                    default:
+                        // code block
+                        break;
+                }
+
+            }
+            catch (FormatException ex)
+            {
+                Lbl_Info.BackColor = Color.Red;
+                Lbl_Info.ForeColor = Color.White;
+                Lbl_Info.Text = ex.Message;
+
+            }
+            catch (DivideByZeroException ex)
+            {
+                Lbl_Info.Text = ex.Message;
+
+            }
+
+        }
+
+        public class ChampsVides : Exception
+        {
+            public ChampsVides(string? message) : base(message)
+            {
+            }
         }
 
         private void Btn_Add_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (String.IsNullOrEmpty(Txt_A.Text) || String.IsNullOrEmpty(Txt_B.Text))
-                {
-                    lbl_Info.Text = "Les champs ne peuvent pas être vides";
-                }
-                else
-                {
-                    //float calcul = Nb_A + Nb_B;
-                    //lbl_Info.Text = (Nb_A + Nb_B).ToString() ;
-                    float calcul = float.Parse(Txt_A.Text, CultureInfo.InvariantCulture.NumberFormat) + float.Parse(Txt_B.Text, CultureInfo.InvariantCulture.NumberFormat);
-                    lbl_Info.Text = calcul.ToString();
-                }
-
-
-            }
-            catch (FormatException ex)
-            {
-                lbl_Info.Text = ex.Message;
-            }
+            Calculer("+");
         }
-
-        private void Btn_Div_Click(object sender, EventArgs e)
-        {
-            if (Txt_A.Text == "0" || Txt_B.Text == "0")
-                lbl_Info.Text = "Division impossible par 0";
-            else if (String.IsNullOrEmpty(Txt_A.Text) || String.IsNullOrEmpty(Txt_B.Text))
-            {
-                lbl_Info.Text = "Les champs ne peuvent pas être vides";
-            }
-            else
-            {
-            try
-                {
-
-                    float calcul = float.Parse(Txt_A.Text, CultureInfo.InvariantCulture.NumberFormat) / float.Parse(Txt_B.Text, CultureInfo.InvariantCulture.NumberFormat);
-                    lbl_Info.Text = calcul.ToString();
-                }
-            catch (DivideByZeroException ex)
-                {
-                    lbl_Info.Text = ex.Message;
-
-                }
-            catch (FormatException ex)
-                {
-                    lbl_Info.Text = ex.Message;
-                }
-            }
-
-
-        }
-
         private void Btn_Diff_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (String.IsNullOrEmpty(Txt_A.Text) || String.IsNullOrEmpty(Txt_B.Text))
-                {
-                    lbl_Info.Text = "Les champs ne peuvent pas être vides";
-                }
-                else
-                {
-                    float calcul = float.Parse(Txt_A.Text, CultureInfo.InvariantCulture.NumberFormat) - float.Parse(Txt_B.Text, CultureInfo.InvariantCulture.NumberFormat);
-
-                    lbl_Info.Text = calcul.ToString();
-
-                    //lbl_Info.Text = Convert.ToString(float.Parse(Txt_A.Text) + float.Parse(Txt_B.Text));
-                }
-
-
-            }
-            catch (FormatException ex)
-            {
-                lbl_Info.Text = ex.Message;
-            }
+            Calculer("-");
         }
-
         private void Btn_Prod_Click(object sender, EventArgs e)
         {
-            try
-            {
-
-                if (String.IsNullOrEmpty(Txt_A.Text) || String.IsNullOrEmpty(Txt_B.Text))
-                {
-                    lbl_Info.Text = "Les champs ne peuvent pas être vides";
-                }
-                else
-                {
-                    float calcul = float.Parse(Txt_A.Text, CultureInfo.InvariantCulture.NumberFormat) * float.Parse(Txt_B.Text, CultureInfo.InvariantCulture.NumberFormat);
-
-                    lbl_Info.Text = calcul.ToString();
-
-                }
-
-
-            }
-            catch (FormatException ex)
-            {
-                lbl_Info.Text = ex.Message;
-            }
+            Calculer("*");
+        }
+        private void Btn_Div_Click(object sender, EventArgs e)
+        {
+            Calculer("/");
         }
         private void Txt_A_KeyPress(object sender, KeyPressEventArgs e)
         {
+            const char hyphen = (char)0x2D;
+            const char delete = (char)0x08;
             // Verifier que la touche pressée n'est pas ctrl, digitale ou .
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            if (!char.IsDigit(e.KeyChar) && 
+                (e.KeyChar != '-') && 
+                (e.KeyChar != ',') &&
+
+                (e.KeyChar != hyphen) && 
+                (e.KeyChar != delete))
+                    {
+                        e.Handled = true;
+                    }
+
+            // Pas plus qu'un ,
+            if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf(',') > -1))
             {
                 e.Handled = true;
             }
 
-            // Pas plus qu'un .
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            // Pas plus qu'un -
+            if ((e.KeyChar == '-') && ((sender as TextBox).Text.IndexOf('-') > -1)) //&& ((sender as TextBox).Text.StartsWith("-")
             {
                 e.Handled = true;
             }
+
+
         }
 
         private void Txt_B_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-    (e.KeyChar != '.'))
+            const char hyphen = (char)0x2D;
+            const char delete = (char)0x08;
+            // Verifier que la touche pressée n'est pas ctrl, digitale ou .
+            if (!char.IsDigit(e.KeyChar) && (e.KeyChar != '-') && (e.KeyChar != ',') && (e.KeyChar != '.') && (e.KeyChar != hyphen) && (e.KeyChar != delete))
+            {
+                e.Handled = true;
+
+            }
+
+            // Pas plus qu'un ,
+            if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf(',') > -1))
             {
                 e.Handled = true;
             }
 
-            // only allow one decimal point
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            // Pas plus qu'un -
+            if ((e.KeyChar == '-') && ((sender as TextBox).Text.IndexOf('-') > -1)) //&& ((sender as TextBox).Text.StartsWith("-")
             {
                 e.Handled = true;
             }
+
+        }
+
+        private void lbl_Info_Click(object sender, EventArgs e)
+        {
 
         }
 

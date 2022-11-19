@@ -11,7 +11,8 @@ namespace Calculatrice
         }
         private void Calculatrice_Load(object sender, EventArgs e)
         {
-
+            Lbl_Info.BackColor = default;
+            Lbl_Info.ForeColor = Color.Black;
         }
 
         private void Btn_Exit_Click(object sender, EventArgs e)
@@ -26,7 +27,7 @@ namespace Calculatrice
             Txt_A.Focus();
             Lbl_Info.Text = "";
 
-            Lbl_Info.BackColor= default;
+            Lbl_Info.BackColor = default;
             Lbl_Info.ForeColor = Color.Black;
         }
 
@@ -39,7 +40,7 @@ namespace Calculatrice
                 Lbl_Info.ForeColor = Color.White;
                 Lbl_Info.Text = "Les champs ne peuvent pas être vides";
             }
-            
+
             float Reponse;
 
             try
@@ -113,35 +114,34 @@ namespace Calculatrice
             Calculer("/");
         }
         private void Txt_A_KeyPress(object sender, KeyPressEventArgs e)
-            }
-            catch (FormatException ex)
-            {
-                lbl_Info.Text = ex.Message;
-            if (!char.IsDigit(e.KeyChar) && 
-                (e.KeyChar != '-') && 
+        {
+            const char hyphen = (char)0x2D;
+            const char delete = (char)0x08;
+            // Verifier que la touche pressée n'est pas ctrl, digitale ou .
+            if (!char.IsDigit(e.KeyChar) &&
+                (e.KeyChar != '-') &&
                 (e.KeyChar != ',') &&
-                (e.KeyChar != hyphen) && 
+                (e.KeyChar != hyphen) &&
                 (e.KeyChar != delete))
-                    {
-                        e.Handled = true;
-                    }
+            {
+                e.Handled = true;
+            }
 
             // Pas plus qu'un ,
             if ((e.KeyChar == ',') && (((TextBox)sender).Text.IndexOf(',') > -1))
-        }
-        private void Txt_A_KeyPress(object sender, KeyPressEventArgs e)
-            }
-            catch (FormatException ex)
             {
+                e.Handled = true;
+            }
+
             // Pas plus qu'un -
             if ((e.KeyChar == '-') && (((TextBox)sender).Text.IndexOf('-') > -1)) //&& ((sender as TextBox).Text.StartsWith("-")
-        }
-        private void Txt_A_KeyPress(object sender, KeyPressEventArgs e)
+            {
+                e.Handled = true;
             }
 
 
         }
-            {
+
         private void Txt_B_KeyPress(object sender, KeyPressEventArgs e)
         {
             const char hyphen = (char)0x2D;
@@ -158,33 +158,12 @@ namespace Calculatrice
 
             // Pas plus qu'un ,
             if ((e.KeyChar == ',') && (((TextBox)sender).Text.IndexOf(',') > -1))
-        {
-        }
-            const char delete = (char)0x08;
-        private void Txt_B_KeyPress(object sender, KeyPressEventArgs e)
+            {
+                e.Handled = true;
+            }
+
             // Pas plus qu'un -
             if ((e.KeyChar == '-') && (((TextBox)sender).Text.IndexOf('-') > -1)) //&& ((sender as TextBox).Text.StartsWith("-")
-            {
-                e.Handled = true;
-            }
-
-        private void Txt_B_KeyPress(object sender, KeyPressEventArgs e)
-            // only allow one decimal point
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
-            {
-                e.Handled = true;
-            }
-
-        private void Txt_B_KeyPress(object sender, KeyPressEventArgs e)
-            // only allow one decimal point
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
-            {
-                e.Handled = true;
-            }
-            }
-
-            // only allow one decimal point
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
             {
                 e.Handled = true;
             }

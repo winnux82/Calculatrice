@@ -41,8 +41,8 @@
             this.Btn_Exit = new System.Windows.Forms.Button();
             this.Btn_Eraser = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.Lbl_Title = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.Lbl_Title = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -84,6 +84,7 @@
             // Lbl_Info
             // 
             this.Lbl_Info.BackColor = System.Drawing.Color.RosyBrown;
+            this.Lbl_Info.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Lbl_Info.Location = new System.Drawing.Point(0, 352);
             this.Lbl_Info.Name = "Lbl_Info";
             this.Lbl_Info.Size = new System.Drawing.Size(326, 66);
@@ -169,6 +170,16 @@
             this.panel1.Size = new System.Drawing.Size(325, 76);
             this.panel1.TabIndex = 12;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(9, 8);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(40, 65);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
             // Lbl_Title
             // 
             this.Lbl_Title.AutoSize = true;
@@ -180,16 +191,6 @@
             this.Lbl_Title.TabIndex = 0;
             this.Lbl_Title.Text = "Calculatrice \r\nnon scientifique";
             this.Lbl_Title.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(9, 8);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(40, 65);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
             // 
             // Calculatrice
             // 

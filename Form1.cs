@@ -72,6 +72,11 @@ namespace Calculatrice
                 }
 
             }
+
+
+
+
+
             catch (FormatException ex)
             {
                 Lbl_Info.BackColor = Color.Red;
@@ -79,12 +84,26 @@ namespace Calculatrice
                 Lbl_Info.Text = ex.Message;
 
             }
+
+            catch(OverflowException ex)
+            {
+                Lbl_Info.BackColor = Color.Red;
+                Lbl_Info.ForeColor = Color.White;
+                Lbl_Info.Text = ex.Message;
+
+            }
+
             catch (DivideByZeroException ex)
             {
                 Lbl_Info.BackColor = Color.Red;
                 Lbl_Info.ForeColor = Color.White;
                 Lbl_Info.Text = ex.Message;
 
+            }
+
+            finally
+            {
+                Lbl_Info.Text += "\nL'opération s'est bien déroulée";
             }
 
         }

@@ -1,3 +1,4 @@
+using Microsoft.VisualBasic.ApplicationServices;
 using System.Globalization;
 
 namespace Calculatrice
@@ -63,6 +64,7 @@ namespace Calculatrice
                         Lbl_Info.Text = Reponse.ToString();
                         break;
                     case "/":
+                        ValiderDivision(Txt_A, Txt_B);
                         Reponse = float.Parse(Txt_A.Text) / float.Parse(Txt_B.Text);
                         Lbl_Info.Text = Reponse.ToString();
                         break;
@@ -74,7 +76,12 @@ namespace Calculatrice
             }
 
 
-
+            catch(ExceptionCalcul ex)
+            {
+                Lbl_Info.BackColor = Color.Red;
+                Lbl_Info.ForeColor = Color.White;
+                Lbl_Info.Text = ex.Message;
+            }
 
 
             catch (FormatException ex)
@@ -183,6 +190,16 @@ namespace Calculatrice
 
 
         }
+
+
+        public static void ValiderDivision(TextBox t1,TextBox t2)
+        {
+            if(t1.Text == "0"||t2.Text == "0")
+            {
+                throw new ExceptionCalcul("Impossible de diviser par 0");
+            }
+        }
+
 
     }
 }

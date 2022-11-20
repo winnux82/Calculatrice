@@ -200,6 +200,9 @@ namespace Calculatrice
             }
         }
 
-
+        private void aProposToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Tous droits réservés Copyright ! \nVandermeulen Christophe");
+        }
     }
 }

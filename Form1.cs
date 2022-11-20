@@ -110,7 +110,7 @@ namespace Calculatrice
 
             finally
             {
-                Lbl_Info.Text += "\nL'opération s'est bien déroulée";
+                //Lbl_Info.Text += "\nL'opération s'est bien déroulée";
             }
 
         }

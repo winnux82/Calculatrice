@@ -3,11 +3,14 @@ using System.Globalization;
 
 namespace Calculatrice
 {
+
+
     public partial class Calculatrice : Form
     {
         public Calculatrice()
         {
             InitializeComponent();
+            Lbl_Info.Hide();
 
         }
         private void Calculatrice_Load(object sender, EventArgs e)
@@ -19,6 +22,8 @@ namespace Calculatrice
         private void Btn_Exit_Click(object sender, EventArgs e)
         {
             this.Close();
+            Application.Exit();
+            
         }
 
         private void Btn_Eraser_Click(object sender, EventArgs e)
@@ -34,6 +39,7 @@ namespace Calculatrice
 
         public void Calculer(string Operateur)
         {
+            Lbl_Info.Visible= true;
 
             if (String.IsNullOrEmpty(Txt_A.Text) || String.IsNullOrEmpty(Txt_B.Text))
             {

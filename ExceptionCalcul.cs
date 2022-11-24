@@ -10,8 +10,8 @@ namespace Calculatrice
     {
         public ExceptionCalcul() { }
 
-        public ExceptionCalcul(string message) : base(string.Format($"Calcul invalide !\n {message}")) 
-            {
+        public ExceptionCalcul(string message) : base(string.Format($"Calcul invalide !\n {message}"))
+        {
         }
     }
 }

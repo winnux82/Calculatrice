@@ -1,17 +1,30 @@
+using Calculatrice;
+
 namespace Calculatrice
 {
     internal static class Program
     {
         /// <summary>
-        ///  The main entry point for the application.
+        /// Point d'entrée principal de l'application.
         /// </summary>
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
-            ApplicationConfiguration.Initialize();
-            Application.Run(new Calculatrice());
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+
+            FormLogin login = new FormLogin();
+            login.ShowDialog();
+
+            if (login.IsValidLogin == true)
+            {
+                CalculatricePOO calculate = new CalculatricePOO();
+                calculate.ShowDialog();
+            }
+
+            //Application.Run(new FormLogin());
+
+            //Application.Run(new FormLogin());
         }
     }
 }

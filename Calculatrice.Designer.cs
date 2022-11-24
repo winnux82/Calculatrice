@@ -205,7 +205,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(325, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(342, 24);
             this.menuStrip1.TabIndex = 13;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -235,7 +235,7 @@
             // aProposToolStripMenuItem
             // 
             this.aProposToolStripMenuItem.Name = "aProposToolStripMenuItem";
-            this.aProposToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aProposToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aProposToolStripMenuItem.Text = "About";
             this.aProposToolStripMenuItem.Click += new System.EventHandler(this.aProposToolStripMenuItem_Click);
             // 
@@ -244,7 +244,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(325, 439);
+            this.ClientSize = new System.Drawing.Size(342, 439);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.Btn_Eraser);
             this.Controls.Add(this.Btn_Exit);
@@ -296,5 +296,6 @@
         private ToolStripMenuItem quitterToolStripMenuItem;
         private ToolStripMenuItem helpToolStripMenuItem;
         private ToolStripMenuItem aProposToolStripMenuItem;
+
     }
 }

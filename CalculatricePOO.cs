@@ -1,5 +1,6 @@
 using Microsoft.VisualBasic.ApplicationServices;
 using System.Globalization;
+using System.Text.RegularExpressions;
 
 namespace Calculatrice
 {
@@ -96,34 +97,46 @@ namespace Calculatrice
         private void Txt_KeyPress(object sender, KeyPressEventArgs e)
         {
             TextBox TxT = (TextBox)sender;
-            //Lbl_Info.Show();
-            //Lbl_Info.Text = e.KeyChar.ToString();
 
-            if (TxT.TextLength >= 1)
-            {
+            bool IsDigitOrControl = char.IsDigit(e.KeyChar)|| char.IsControl(e.KeyChar);
+            bool IsDecimal = e.KeyChar =='.' && !TxT.Text.Contains('.');
+            bool IsRelatif = e.KeyChar == '-' && string.IsNullOrEmpty(TxT.Text);
+            bool IsOtherOp = e.KeyChar == '+' || e.KeyChar == '/' || e.KeyChar == '*';
 
+            e.Handled = !(IsDigitOrControl || IsDecimal || IsRelatif && !IsOtherOp);
 
-                if (!TxT.Text.Contains('.'))
-                {
-                    if (!(char.IsDigit(e.KeyChar) || 
-                        char.IsControl(e.KeyChar) || 
-                        e.KeyChar == '.' || 
-                        !(e.KeyChar == '-')))
-                    {
-                        e.Handled = true;
-                    }
-                }
-                else
-                {
-                    if (!(char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar)))
-                    {
-                        e.Handled = true;
-                    }
-                }
-            }
-        
+            //if(!(test1 || test2 ||test3))
+            //{
+            //    e.Handled = true;
+            //}
 
         }
+
+        //if (TxT.TextLength >= 1)
+        //{
+
+
+        //    if (!TxT.Text.Contains('.'))
+        //    {
+        //        if (!(char.IsDigit(e.KeyChar) || 
+        //            char.IsControl(e.KeyChar) || 
+        //            e.KeyChar == '.' || 
+        //            !(e.KeyChar == '-')))
+        //        {
+        //            e.Handled = true;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        if (!(char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar)))
+        //        {
+        //            e.Handled = true;
+        //        }
+        //    }
+        //}
+
+
+
         private void Txt_TextChanged(object sender, EventArgs e)
         {
             Lbl_Info.Hide();

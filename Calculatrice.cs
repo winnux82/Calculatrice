@@ -138,8 +138,12 @@ namespace Calculatrice
         {
             Calculer("/");
         }
-        private void Txt_A_KeyPress(object sender, KeyPressEventArgs e)
+
+
+        private void Txt_KeyPress(object sender, KeyPressEventArgs e)
         {
+            TextBox tbx = (TextBox)sender;
+
             const char hyphen = (char)0x2D;
             const char delete = (char)0x08;
             // Verifier la touche pressée
@@ -168,34 +172,7 @@ namespace Calculatrice
 
         }
 
-        private void Txt_B_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            const char hyphen = (char)0x2D;
-            const char delete = (char)0x08;
-            // Verifier la touche pressée
-            if (!char.IsDigit(e.KeyChar) &&
-                (e.KeyChar != '-') &&
-                (e.KeyChar != ',') &&
-                (e.KeyChar != hyphen) &&
-                (e.KeyChar != delete))
-            {
-                e.Handled = true;
-            }
 
-            // Pas plus qu'un ,
-            if ((e.KeyChar == ',') && (((TextBox)sender).Text.IndexOf(',') > -1))
-            {
-                e.Handled = true;
-            }
-
-            // Pas plus qu'un -
-            if ((e.KeyChar == '-') && (((TextBox)sender).Text.IndexOf('-') > -1)) //&& ((sender as TextBox).Text.StartsWith("-")
-            {
-                e.Handled = true;
-            }
-
-
-        }
 
 
         public static void ValiderDivision(TextBox t1,TextBox t2)
@@ -209,6 +186,11 @@ namespace Calculatrice
         private void aProposToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Tous droits réservés Copyright \nVandermeulen Christophe", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        }
+
+        private void Txt_A_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }

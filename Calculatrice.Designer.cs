@@ -77,7 +77,8 @@
             this.Txt_A.Name = "Txt_A";
             this.Txt_A.Size = new System.Drawing.Size(148, 23);
             this.Txt_A.TabIndex = 2;
-            this.Txt_A.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_A_KeyPress);
+            this.Txt_A.TextChanged += new System.EventHandler(this.Txt_A_TextChanged);
+            this.Txt_A.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_KeyPress);
             // 
             // Txt_B
             // 
@@ -85,7 +86,7 @@
             this.Txt_B.Name = "Txt_B";
             this.Txt_B.Size = new System.Drawing.Size(148, 23);
             this.Txt_B.TabIndex = 3;
-            this.Txt_B.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_B_KeyPress);
+            this.Txt_B.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_KeyPress);
             // 
             // Lbl_Info
             // 
@@ -220,7 +221,7 @@
             // quitterToolStripMenuItem
             // 
             this.quitterToolStripMenuItem.Name = "quitterToolStripMenuItem";
-            this.quitterToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.quitterToolStripMenuItem.Size = new System.Drawing.Size(93, 22);
             this.quitterToolStripMenuItem.Text = "Exit";
             this.quitterToolStripMenuItem.Click += new System.EventHandler(this.Btn_Exit_Click);
             // 
